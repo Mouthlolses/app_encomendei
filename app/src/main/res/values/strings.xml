@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">app_encomendei</string>
+    <string name="title_activity_tracking">TrackingActivity</string>
 </resources>
