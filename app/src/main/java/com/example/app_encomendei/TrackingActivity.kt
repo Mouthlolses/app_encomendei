@@ -87,7 +87,7 @@ fun HomeScreen(padding: PaddingValues, modifier: Modifier = Modifier) {
         ) {
             Row(
                 modifier = Modifier
-                    .padding(16.dp)
+                    .padding(40.dp)
             ) {
                 OutlinedTextField(
                     value = text,
