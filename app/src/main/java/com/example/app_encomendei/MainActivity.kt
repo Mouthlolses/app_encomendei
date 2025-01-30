@@ -65,7 +65,7 @@ fun MyScreenContent(modifier: Modifier = Modifier) {
             .fillMaxSize()
             .background(
                 brush = Brush.linearGradient(
-                    colors = listOf(Color(0xFF5D025D), Color(0xFF020E6C)),
+                    colors = listOf(Color(0xFF6E7777), Color(0xFF02335B)),
                     start = Offset(0f, 0f),
                     end = Offset(1000f, 1000f)
                 )

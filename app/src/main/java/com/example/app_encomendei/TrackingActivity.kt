@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -19,7 +18,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -32,7 +30,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.AbsoluteAlignment
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -100,7 +97,7 @@ fun HomeScreen(padding: PaddingValues, modifier: Modifier = Modifier) {
                         .fillMaxWidth()
                         .padding(bottom = 70.dp),
                     textStyle = TextStyle(
-                        color = Color.Black,
+                        color = Color.White,
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold
                     ),
@@ -111,11 +108,15 @@ fun HomeScreen(padding: PaddingValues, modifier: Modifier = Modifier) {
                     ),
                     visualTransformation = VisualTransformation.None,
                     colors = TextFieldDefaults.outlinedTextFieldColors(
-                        focusedBorderColor = Color(0xFF03A9F4),
-                        unfocusedBorderColor = Color(0xFF05010C),
+                        focusedBorderColor = Color(0xFF1E88E5),
+                        unfocusedBorderColor = Color(0xFF220556),
                         cursorColor = Color(0xFF03A9F4),
                         focusedLabelColor = Color(0xFF03A9F4),
-                        unfocusedLabelColor = Color.White
+                        unfocusedLabelColor = Color.White,
+                        focusedPlaceholderColor = Color.White,
+                        unfocusedPlaceholderColor = Color.White,
+                        errorPlaceholderColor = Color.Red,
+                        disabledPlaceholderColor = Color.White
                     ),
                     shape = MaterialTheme.shapes.medium
                 )
