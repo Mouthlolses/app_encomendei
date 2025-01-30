@@ -25,8 +25,8 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -75,7 +75,7 @@ fun MyScreenContent(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Rastreie Sua Encomenda!",
+            text = "Rastreie Sua Encomenda",
             style = TextStyle(
                 fontFamily = FontFamily.Serif,
                 fontSize = 20.sp,
@@ -88,9 +88,9 @@ fun MyScreenContent(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .height(50.dp)
                 .fillMaxWidth(),
-            shape = RoundedCornerShape(10.dp), //definindo formato do button
+            shape = RoundedCornerShape(10.dp),               //definindo formato do button
             colors = ButtonDefaults.buttonColors(            //Definindo cor do Button
-                containerColor = Color.Blue,
+                containerColor = Color(0xFF03A9F4),
                 contentColor = Color.White,
                 disabledContentColor = Color.LightGray,
                 disabledContainerColor = Color.Gray

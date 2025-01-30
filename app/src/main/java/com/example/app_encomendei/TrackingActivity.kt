@@ -132,7 +132,7 @@ fun HomeScreen(padding: PaddingValues, modifier: Modifier = Modifier) {
                         .fillMaxWidth(),
                     shape = RoundedCornerShape(10.dp),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = Color.Blue,
+                        containerColor = Color(0xFF4CAF50),
                         contentColor = Color.White,
                     ),
                     enabled = true,
