@@ -35,6 +35,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.AbsoluteAlignment
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
@@ -75,12 +76,13 @@ fun HomeScreen(padding: PaddingValues, modifier: Modifier = Modifier) {
         modifier = Modifier
             .padding(padding)
     ) {
-
         Column(
             modifier = modifier
                 .fillMaxSize()
                 .padding(0.dp)
-                .background(color = Color.White),
+                .background(brush = Brush.linearGradient(
+                    colors = listOf(Color(0xFF6E7777),Color(0xFF02335B))
+                )),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
 
@@ -110,10 +112,10 @@ fun HomeScreen(padding: PaddingValues, modifier: Modifier = Modifier) {
                     visualTransformation = VisualTransformation.None,
                     colors = TextFieldDefaults.outlinedTextFieldColors(
                         focusedBorderColor = Color(0xFF03A9F4),
-                        unfocusedBorderColor = Color(0xFF260366),
+                        unfocusedBorderColor = Color(0xFF05010C),
                         cursorColor = Color(0xFF03A9F4),
                         focusedLabelColor = Color(0xFF03A9F4),
-                        unfocusedLabelColor = Color.Gray
+                        unfocusedLabelColor = Color.White
                     ),
                     shape = MaterialTheme.shapes.medium
                 )
