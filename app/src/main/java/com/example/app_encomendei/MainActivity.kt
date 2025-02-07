@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -69,7 +70,7 @@ fun MyScreenContent(modifier: Modifier = Modifier) {
                     end = Offset(1000f, 1000f)
                 )
             )
-            .padding(16.dp),
+            .padding(0.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -83,34 +84,39 @@ fun MyScreenContent(modifier: Modifier = Modifier) {
             )
         )
         Spacer(modifier = modifier.height(150.dp))
-        Button(
-            modifier = Modifier
-                .height(50.dp)
-                .fillMaxWidth(),
-            shape = RoundedCornerShape(10.dp),               //definindo formato do button
-            colors = ButtonDefaults.buttonColors(            //Definindo cor do Button
-                containerColor = Color(0xFF03A9F4),
-                contentColor = Color.White,
-                disabledContentColor = Color.LightGray,
-                disabledContainerColor = Color.Gray
-            ),
-            enabled = true,  // Controle do Button
-            onClick = {
-
-                // Criando um Intent para navegar para a outra Activity
-                val intent = Intent(context, TrackingActivity::class.java)
-                context.startActivity(intent)
-            }
+        Row(
+            modifier
+                .padding(16.dp)
         ) {
-            Text(
-                text = "Clique aqui",
-                style = TextStyle(
-                    fontFamily = FontFamily.Serif,
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    color = Color.White
+            Button(
+                modifier = Modifier
+                    .height(50.dp)
+                    .fillMaxWidth(),
+                shape = RoundedCornerShape(10.dp),               //definindo formato do button
+                colors = ButtonDefaults.buttonColors(            //Definindo cor do Button
+                    containerColor = Color(0xFF03A9F4),
+                    contentColor = Color.White,
+                    disabledContentColor = Color.LightGray,
+                    disabledContainerColor = Color.Gray
+                ),
+                enabled = true,  // Controle do Button
+                onClick = {
+
+                    // Criando um Intent para navegar para a outra Activity
+                    val intent = Intent(context, TrackingActivity::class.java)
+                    context.startActivity(intent)
+                }
+            ) {
+                Text(
+                    text = "Clique aqui",
+                    style = TextStyle(
+                        fontFamily = FontFamily.Serif,
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        color = Color.White
+                    )
                 )
-            )
+            }
         }
     }
 }
