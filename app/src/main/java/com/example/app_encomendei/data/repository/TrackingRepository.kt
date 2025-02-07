@@ -7,6 +7,7 @@ import kotlinx.coroutines.withContext
 
 
 //Aqui Chamamos a API e tratamos os dados
+
 class TrackingRepository {
     suspend fun getTracking(code: String) : TrackingInfo? {
         return try {

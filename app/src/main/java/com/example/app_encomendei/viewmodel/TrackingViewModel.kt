@@ -8,6 +8,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
+//MutableStateFlow → Atualiza a UI com os dados em tempo real.
+//fetchTracking(code) → Busca os dados do repositório.
+
 open class TrackingViewModel : ViewModel() {
 
     private val repository = TrackingRepository()
@@ -22,6 +25,3 @@ open class TrackingViewModel : ViewModel() {
     }
 }
 
-
-//MutableStateFlow → Atualiza a UI com os dados em tempo real.
-//fetchTracking(code) → Busca os dados do repositório.
