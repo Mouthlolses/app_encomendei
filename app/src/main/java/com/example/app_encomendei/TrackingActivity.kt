@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
@@ -60,10 +61,7 @@ class TrackingActivity : ComponentActivity() {
 
         setContent {
             App_encomendeiTheme {
-                Scaffold(
-                    modifier = Modifier
-                        .fillMaxSize()
-                ) { innerPadding ->
+                Scaffold() { innerPadding ->
                     HomeScreen(
                         padding = innerPadding,
                         viewModel = viewModel
@@ -85,107 +83,103 @@ fun HomeScreen(
     var trackingCode by remember { mutableStateOf("") }
     val trackingInfo by viewModel.trackingInfo.collectAsState()
 
-    Box(
-        modifier = Modifier
-            .padding(padding)
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .background(
+                brush = Brush.linearGradient(
+                    colors = listOf(Color(0xFF6E7777), Color(0xFF02335B))
+                )
+            )
+            .padding(0.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Column(
-            modifier = modifier
-                .fillMaxSize()
-                .background(
-                    brush = Brush.linearGradient(
-                        colors = listOf(Color(0xFF6E7777), Color(0xFF02335B))
-                    )
-                )
-                .padding(0.dp),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-
+        Row(
+            modifier = Modifier
+                .padding(16.dp)
         ) {
-            Row(
+            OutlinedTextField(
+                value = trackingCode,
+                onValueChange = { trackingCode = it },
+                label = { Text("Digite aqui seu código de rastreio") },
+                placeholder = { Text("EX: AB123456789BR") },
                 modifier = Modifier
-                    .padding(40.dp)
-            ) {
-                OutlinedTextField(
-                    value = trackingCode,
-                    onValueChange = { trackingCode = it },
-                    label = { Text("Digite aqui seu código de rastreio") },
-                    placeholder = { Text("EX: AB123456789BR") },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 70.dp),
-                    textStyle = TextStyle(
-                        color = Color.White,
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold
-                    ),
-                    singleLine = true,
-                    keyboardOptions = KeyboardOptions(
-                        capitalization = KeyboardCapitalization.Characters,
-                        keyboardType = KeyboardType.Text
-                    ),
-                    visualTransformation = VisualTransformation.None,
-                    colors = TextFieldDefaults.outlinedTextFieldColors(
-                        focusedBorderColor = Color(0xFF1E88E5),
-                        unfocusedBorderColor = Color(0xFF220556),
-                        cursorColor = Color(0xFF03A9F4),
-                        focusedLabelColor = Color(0xFF03A9F4),
-                        unfocusedLabelColor = Color.White,
-                        focusedPlaceholderColor = Color.White,
-                        unfocusedPlaceholderColor = Color.White,
-                        errorPlaceholderColor = Color.Red,
-                        disabledPlaceholderColor = Color.White
-                    ),
-                    shape = MaterialTheme.shapes.medium
-                )
-            }
-
-            Row(
-                modifier = Modifier
-                    .padding(16.dp)
-            ) {
-                Button(
-                    modifier = Modifier
-                        .height(50.dp)
-                        .fillMaxWidth(),
-                    shape = RoundedCornerShape(10.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color(0xFF4CAF50),
-                        contentColor = Color.White,
-                    ),
-                    enabled = true,
-                    onClick = {
-                        viewModel.fetchTrackin(trackingCode)
-                    }
-                ) {
-                    Text(
-                        text = "Rastrear",
-                        style = TextStyle(
-                            fontFamily = FontFamily.Serif,
-                            fontSize = 14.sp,
-                            fontWeight = FontWeight.SemiBold,
-                            color = Color.White
-                        )
-                    )
-                }
-
-                //Exibir informações de Rastreamento
-
-                trackingInfo?.let {
-                    Column(
-                        modifier = Modifier
-                            .padding(16.dp)
-                    ) {
-                        Text("Status ${it.status}", color = Color.White)
-                        Text("Local ${it.location}", color = Color.White)
-                        Text("Última Atualização ${it.date}", color = Color.White)
-                    }
-                } ?: Text(
-                    "Nenhum Rastreamento Encontrado",
+                    .padding(bottom = 70.dp),
+                textStyle = TextStyle(
                     color = Color.White,
-                    modifier = Modifier.padding(16.dp)
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold
+                ),
+                singleLine = true,
+                keyboardOptions = KeyboardOptions(
+                    capitalization = KeyboardCapitalization.Characters,
+                    keyboardType = KeyboardType.Text
+                ),
+                visualTransformation = VisualTransformation.None,
+                colors = TextFieldDefaults.outlinedTextFieldColors(
+                    focusedBorderColor = Color(0xFF1E88E5),
+                    unfocusedBorderColor = Color(0xFF220556),
+                    cursorColor = Color(0xFF03A9F4),
+                    focusedLabelColor = Color(0xFF03A9F4),
+                    unfocusedLabelColor = Color.White,
+                    focusedPlaceholderColor = Color.White,
+                    unfocusedPlaceholderColor = Color.White,
+                    errorPlaceholderColor = Color.Red,
+                    disabledPlaceholderColor = Color.White
+                ),
+                shape = MaterialTheme.shapes.medium
+            )
+        }
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Button(
+                modifier = Modifier
+                    .height(50.dp)
+                    .wrapContentWidth(),
+                shape = RoundedCornerShape(10.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF4CAF50),
+                    contentColor = Color.White,
+                ),
+                enabled = true,
+                onClick = {
+                    viewModel.fetchTrackin(trackingCode)
+                }
+            ) {
+                Text(
+                    text = "Rastrear",
+                    style = TextStyle(
+                        fontFamily = FontFamily.Serif,
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        color = Color.White
+                    )
                 )
             }
+
+            //Exibir informações de Rastreamento
+
+            trackingInfo?.let {
+                Column(
+                    modifier = Modifier
+                        .padding(16.dp)
+                ) {
+                    Text("Status: ${it.status}", color = Color.White)
+                    Text("Local: ${it.location}", color = Color.White)
+                    Text("Última Atualização: ${it.date}", color = Color.White)
+                }
+            } ?: Text(
+                "Nenhum Rastreamento Encontrado",
+                color = Color.White,
+                modifier = Modifier.padding(16.dp)
+            )
         }
     }
 }
@@ -199,7 +193,6 @@ fun HomeScreenPreview() {
             TrackingInfo("Objeto", "Objeto em Transito", "07/02/2025", "São Paulo")
         )
     }
-
     App_encomendeiTheme {
         HomeScreen(
             padding = PaddingValues(0.dp),
